@@ -6,9 +6,12 @@ import joblib
 import pandas as pd
 import numpy as np
 from rdkit import Chem
-from rdkit.Chem import Descriptors
 from rdkit.Chem import AllChem
 from rdkit.Chem import Draw
+from rdkit.Chem.Draw import rdMolDraw2D
+from rdkit.Chem.Draw.rdMolDraw2D import *
+from PIL import Image
+import io
 
 import tensorflow as tf
 
@@ -60,8 +63,14 @@ if st.button("Predict"):
         if mol:
             st.success(f"Valid SMILES Entered: {smiles_input}")
 
-            # Show molecule structure
-            st.image(Draw.MolToImage(mol), caption="Molecule Structure", use_container_width=False)
+            # Create a drawer
+            drawer = rdMolDraw2D.MolDraw2DCairo(300, 300)  # 300x300 px image
+            rdMolDraw2D.PrepareAndDrawMolecule(drawer, mol)
+            drawer.FinishDrawing()
+
+            # Convert to Image
+            img = Image.open(io.BytesIO(drawer.GetDrawingText()))
+            st.image(img, caption="Molecule Structure", use_container_width=False)
         else:
             st.error("Invalid SMILES string. Please check again.")
     except:
