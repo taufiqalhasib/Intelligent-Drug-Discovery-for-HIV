@@ -43,10 +43,11 @@ if st.button("Predict"):
     if features is not None:
         features = features.reshape(1, -1)  # 2D array for sklearn
         prediction = model.predict(features)
-        st.write("Prediction:", "Active" if prediction == 1 else "Inactive")
+        st.write("Prediction:", "Active" if prediction > 0.5 else "Inactive")
         st.write("Predicted Activity:", prediction[0])
     else:
         st.error("Invalid SMILES string")
+
 
 
 
