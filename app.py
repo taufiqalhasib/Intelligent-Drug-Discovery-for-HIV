@@ -7,9 +7,6 @@ import pandas as pd
 import numpy as np
 from rdkit import Chem
 from rdkit.Chem import AllChem
-from rdkit.Chem.Draw import rdMolDraw2D
-from PIL import Image
-import io
 
 import tensorflow as tf
 
@@ -50,6 +47,7 @@ if st.button("Predict"):
         st.write("Predicted Activity:", prediction[0])
     else:
         st.error("Invalid SMILES string")
+
 
 
 
