@@ -12,6 +12,5 @@ scipy
 python-dateutil
 MarkupSafe
 retrying
-rdkit-pypi
+rdkit
 tensorflow
-
