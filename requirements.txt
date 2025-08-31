@@ -1,0 +1,17 @@
+numpy
+pandas
+scikit-learn
+streamlit
+streamlit_option_menu
+pytz
+tzdata
+threadpoolctl
+six
+joblib
+pickle
+scipy
+python-dateutil
+MarkupSafe
+retrying
+rdkit
+tensorflow
