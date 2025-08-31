@@ -42,25 +42,6 @@ def smiles_to_features(smiles):
 if st.button("Predict"):
     features = smiles_to_features(smiles_input)
 
-    # Molecule Structure
-    try:
-        mol = Chem.MolFromSmiles(smiles_input)
-        if mol:
-            st.success(f"Valid SMILES Entered: {smiles_input}")
-
-            # Create a drawer
-            drawer = rdMolDraw2D.MolDraw2DCairo(300, 300)
-            rdMolDraw2D.PrepareAndDrawMolecule(drawer, mol)
-            drawer.FinishDrawing()
-
-            # Convert to Image
-            img = Image.open(io.BytesIO(drawer.GetDrawingText()))
-            st.image(img, caption="Molecule Structure", use_container_width=False)
-        else:
-            st.error("Invalid SMILES string. Please check again.")
-    except:
-        st.error("Error processing SMILES string.")
-
     # Prediction
     if features is not None:
         features = features.reshape(1, -1)  # 2D array for sklearn
@@ -69,5 +50,6 @@ if st.button("Predict"):
         st.write("Predicted Activity:", prediction[0])
     else:
         st.error("Invalid SMILES string")
+
 
 
