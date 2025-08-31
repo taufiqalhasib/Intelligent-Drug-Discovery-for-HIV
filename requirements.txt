@@ -8,7 +8,6 @@ tzdata
 threadpoolctl
 six
 joblib
-pickle
 scipy
 python-dateutil
 MarkupSafe
