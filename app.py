@@ -7,9 +7,7 @@ import pandas as pd
 import numpy as np
 from rdkit import Chem
 from rdkit.Chem import AllChem
-from rdkit.Chem import Draw
 from rdkit.Chem.Draw import rdMolDraw2D
-from rdkit.Chem.Draw.rdMolDraw2D import *
 from PIL import Image
 import io
 
@@ -26,19 +24,6 @@ st.title("Intelligent Drug Discovery for HIV")
 
 # Input for SMILES
 smiles_input = st.text_input("Enter a SMILES string:")
-
-# if st.button("Submit"):
-#     try:
-#         mol = Chem.MolFromSmiles(smiles_input)
-#         if mol:
-#             st.success(f"Valid SMILES Entered: {smiles_input}")
-#
-#             # Show molecule structure
-#             st.image(Draw.MolToImage(mol), caption="Molecule Structure", use_column_width=True)
-#         else:
-#             st.error("Invalid SMILES string. Please check again.")
-#     except:
-#         st.error("Error processing SMILES string.")
 
 
 # Finger Print Generating
@@ -64,7 +49,7 @@ if st.button("Predict"):
             st.success(f"Valid SMILES Entered: {smiles_input}")
 
             # Create a drawer
-            drawer = rdMolDraw2D.MolDraw2DCairo(300, 300)  # 300x300 px image
+            drawer = rdMolDraw2D.MolDraw2DCairo(300, 300)
             rdMolDraw2D.PrepareAndDrawMolecule(drawer, mol)
             drawer.FinishDrawing()
 
